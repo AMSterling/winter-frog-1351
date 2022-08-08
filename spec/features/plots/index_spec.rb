@@ -37,12 +37,70 @@ RSpec.describe 'the plot index' do
 
     expect(current_path).to eq('/plots')
 
-    within '#plot-0' do
+    within "#plot-#{tg1.id}" do
       expect(page).to have_content('Number: 25')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Purple Beauty Sweet Bell Pepper')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Basil')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-3' do
+        expect(page).to have_content('Squash')
+      end
     end
 
-    within '#plot-1' do
+    within "#plot-#{tg2.id}" do
       expect(page).to have_content('Number: 26')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Cilantro')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Parsley')
+      end
+    end
+
+    within "#plot-#{bg1.id}" do
+      expect(page).to have_content('Number: 2')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Parsley')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Parsley')
+      end
+    end
+
+    within "#plot-#{og1.id}" do
+      expect(page).to have_content('Number: 738')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Cilantro')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Basil')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-3' do
+        expect(page).to have_content('Squash')
+      end
     end
   end
 end
