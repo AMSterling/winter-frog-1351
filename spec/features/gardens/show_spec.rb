@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'deleting a plant' do
-  it 'is a button to delete the plant' do
+RSpec.describe 'the garden show page' do
+  it 'has a list of plants in the gardens plots' do
     turing_garden = Garden.create!(name: 'Turing Community Garden', organic: true)
     library_garden = Garden.create!(name: 'Public Library Garden', organic: true)
     other_garden = Garden.create!(name: 'Main Street Garden', organic: false)
@@ -33,30 +33,9 @@ RSpec.describe 'deleting a plant' do
     PlotPlant.create!(plot_id: og1.id, plant_id: basil.id)
     PlotPlant.create!(plot_id: og1.id, plant_id: squash.id)
 
-    visit '/plots'
+    visit "/gardens/#{turing_garden.id}"
 
-    within "#plot-#{tg1.id}" do
-      click_button('Delete Squash')
-      expect(current_path).to eq('/plots')
-      expect(page).to_not have_content('Squash')
-    end
-
-    within "#plot-#{og1.id}" do
-      expect(page).to have_content('Number: 738')
-      expect(page).to have_content('Plants:')
-
-      within '#plant-0' do
-        expect(page).to have_content('Cilantro')
-      end
-      within '#plant-1' do
-        expect(page).to have_content('Basil')
-      end
-      within '#plant-2' do
-        expect(page).to have_content('Mint')
-      end
-      # within '#plant-3' do
-      #   expect(page).to have_content('Squash')
-      # end
-    end
+    expect(page).to have_content('Turing Community Garden Plants')
+    
   end
 end
