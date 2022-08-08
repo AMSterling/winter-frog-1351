@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_08_151547) do
+ActiveRecord::Schema.define(version: 2022_08_08_174811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_08_08_151547) do
     t.index ["garden_id"], name: "index_plots_on_garden_id"
   end
 
-  add_foreign_key "plot_plants", "plants"
+  add_foreign_key "plot_plants", "plants", on_delete: :cascade
   add_foreign_key "plot_plants", "plots"
   add_foreign_key "plots", "gardens"
 end
