@@ -1,17 +1,13 @@
 class PlotPlantsController < ApplicationController
-  before_action :find_plot
+  before_action :find_plot_plant
 
   def delete
-    if Plot.find(params[:plot_id])
-      PlotPlant.delete(params[:id])
-      redirect_to '/plots'
-    else
-      redirect_to '/plots'
-    end
+    PlotPlant.delete(params[:id])
+    redirect_to '/plots'
   end
 
   private
-  def find_plot
-    @plot = Plot.find(params[:plot_id])
+  def find_plot_plant
+    @plot_plant = PlotPlant.where(params[:id])
   end
 end
