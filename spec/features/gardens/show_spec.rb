@@ -21,6 +21,7 @@ RSpec.describe 'the garden show page' do
     PlotPlant.create!(plot_id: tg1.id, plant_id: pepper.id)
     PlotPlant.create!(plot_id: tg1.id, plant_id: mint.id)
     PlotPlant.create!(plot_id: tg1.id, plant_id: basil.id)
+    PlotPlant.create!(plot_id: tg1.id, plant_id: basil.id)
     PlotPlant.create!(plot_id: tg1.id, plant_id: squash.id)
     PlotPlant.create!(plot_id: tg2.id, plant_id: cilantro.id)
     PlotPlant.create!(plot_id: tg2.id, plant_id: mint.id)
@@ -34,8 +35,41 @@ RSpec.describe 'the garden show page' do
     PlotPlant.create!(plot_id: og1.id, plant_id: squash.id)
 
     visit "/gardens/#{turing_garden.id}"
-
+save_and_open_page
     expect(page).to have_content('Turing Community Garden Plants')
-    
+    expect(page).to have_content('Plot Number: 25')
+
+    within "#plot-#{tg1.id}" do
+      expect(page).to have_content('Number: 25')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Basil')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Purple Beauty Sweet Bell Pepper')
+      end
+      within '#plant-3' do
+        expect(page).to have_content('Squash')
+      end
+    end
+
+    within "#plot-#{tg2.id}" do
+      expect(page).to have_content('Plot Number: 26')
+      expect(page).to have_content('Plants:')
+
+      within '#plant-0' do
+        expect(page).to have_content('Cilantro')
+      end
+      within '#plant-1' do
+        expect(page).to have_content('Mint')
+      end
+      within '#plant-2' do
+        expect(page).to have_content('Parsley')
+      end
+    end
   end
 end
