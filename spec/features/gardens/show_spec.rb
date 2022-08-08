@@ -35,7 +35,7 @@ RSpec.describe 'the garden show page' do
     PlotPlant.create!(plot_id: og1.id, plant_id: squash.id)
 
     visit "/gardens/#{turing_garden.id}"
-save_and_open_page
+
     expect(page).to have_content('Turing Community Garden Plants')
     expect(page).to have_content('Plot Number: 25')
 
@@ -51,9 +51,6 @@ save_and_open_page
       end
       within '#plant-2' do
         expect(page).to have_content('Purple Beauty Sweet Bell Pepper')
-      end
-      within '#plant-3' do
-        expect(page).to have_content('Squash')
       end
     end
 

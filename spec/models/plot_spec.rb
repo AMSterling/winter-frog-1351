@@ -41,7 +41,7 @@ RSpec.describe Plot do
       PlotPlant.create!(plot_id: og1.id, plant_id: basil.id)
       PlotPlant.create!(plot_id: og1.id, plant_id: squash.id)
 
-      expect(tg1.unique_plants).to eq(["Basil", "Mint", "Purple Beauty Sweet Bell Pepper", "Squash"])
+      expect(tg1.unique_plants_with_short_harvest).to eq(["Basil", "Mint", "Purple Beauty Sweet Bell Pepper"])
     end
   end
 end

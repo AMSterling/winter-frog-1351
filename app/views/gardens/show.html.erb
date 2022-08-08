@@ -2,7 +2,7 @@
 <% @garden.plots.each do |plot| %>
 <div id="plot-<%= plot.id %>">
   <h3>Plot Number: <%= plot.number %></h3>
-  <p>Plants: <% plot.unique_plants.each_with_index do |plant, index| %>
+  <p>Plants: <% plot.unique_plants_with_short_harvest.each_with_index do |plant, index| %>
     <div id="plant-<%= index %>">
       <%= plant %>
     </div></p>
