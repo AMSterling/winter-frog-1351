@@ -1,0 +1,7 @@
+<h1>Plot Index</h1>
+
+<% @plots.each_with_index do |plot, index| %>
+<div id="plot-<%= index %>">
+  <p>Number: <%= plot.number %></p>
+</div>
+<% end %>
